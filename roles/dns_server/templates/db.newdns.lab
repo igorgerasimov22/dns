@@ -1,0 +1,14 @@
+$TTL 86400
+@   IN  SOA ns01.newdns.lab. admin.newdns.lab. (
+            2025051801 ; Serial
+            3600       ; Refresh
+            1800       ; Retry
+            604800     ; Expire
+            86400      ; Negative Cache TTL
+)
+
+@   IN  NS  ns01.newdns.lab.
+@   IN  NS  ns02.newdns.lab.
+
+www     IN  A   192.168.50.15
+www     IN  A   192.168.50.16

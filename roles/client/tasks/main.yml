@@ -1,0 +1,10 @@
+---
+- name: Установка пакета bind-utils
+  yum:
+    name: bind-utils
+    state: present
+
+- name: Копирование конфигурационного файла resolv.conf
+  template:
+    src: resolv.conf
+    dest: /etc/resolv.conf

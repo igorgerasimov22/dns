@@ -1,0 +1,38 @@
+---
+- name: Установка пакета bind
+  yum:
+    name: bind
+    state: present
+
+- name: Копирование конфигурационного файла named.conf
+  template:
+    src: named.conf
+    dest: /etc/named.conf
+  notify:
+    - restart named
+
+- name: Копирование файла зоны dns.lab
+  template:
+    src: db.dns.lab
+    dest: /var/named/db.dns.lab
+  notify:
+    - restart named
+
+- name: Копирование файла зоны newdns.lab
+  template:
+    src: db.newdns.lab
+    dest: /var/named/db.newdns.lab
+  notify:
+    - restart named
+
+- name: Убедитесь, что DNS-сервер запущен
+  service:
+    name: named
+    state: started
+    enabled: true
+
+  handlers:
+    - name: restart named
+      service:
+        name: named
+        state: restarted

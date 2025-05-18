@@ -1,0 +1,8 @@
+---
+- hosts: dns_servers
+  roles:
+    - dns_server
+
+- hosts: clients
+  roles:
+    - clients
